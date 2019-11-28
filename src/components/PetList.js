@@ -56,7 +56,7 @@ class PetList extends React.Component{
     render(){
         const Yukleniyor = <div>Yukleniyor</div>;
         const EmptyPets = <div>Bulunamadı</div>;
-        const Pets =  [<h3>Gösterilen Pet Sayısı: 5</h3>,<div className="row">
+    const Pets =  [<h3>Gösterilen Pet Sayısı: {this.state.pets.length}</h3>,<div className="row">
             {
                 this.state.pets.map((pet) => {
                     return <Pet key={Math.random()} {...pet} />

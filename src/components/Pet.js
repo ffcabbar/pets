@@ -1,8 +1,8 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 
 function Pet(props) {
-    const {name, image, age, description, breed} = props;
+    const {name, image, age, description, breed, id} = props;
     return (
         <div className="col-lg-6 col-md-4 mb-4">
             <div className="card h-100">
@@ -23,6 +23,9 @@ function Pet(props) {
                 </div>
                 <div className="card-footer">
                     <div className="btn btn-success">Favorilere Ekle</div>
+                    <div className="btn btn-secondary ml-3">
+                        <Link className="text-decoration-none text-white" to={`/detay/${id}`}>Detay</Link>
+                    </div>
                 </div>
             </div>
         </div>
