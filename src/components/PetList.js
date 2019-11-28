@@ -11,7 +11,8 @@ class PetList extends React.Component{
         this.state = {
             _pets: [],
             pets: [],
-            yukleniyor: true
+            yukleniyor: true,
+            loadPet:4
         }
     }
 
@@ -21,9 +22,21 @@ class PetList extends React.Component{
                 _pets: data,
                 pets: data,
                 yukleniyor: false
-            })
+            });
         })
+
+        window.onscroll = () => {
+            // Hocam en ufak scrollda 4 der 4 der hızlı bir şekilde pet'ler geliyordu. Bende ilk başta böyle bir şey yaptım net görünmesi için.
+            if(window.scrollY > 500) {
+                this.setState({
+                    loadPet: this.state.loadPet + 4
+                });
+            }    
+        }
+
+
     }
+    
 
     componentDidUpdate(prevProps) {
         if(prevProps.activeFilter !== this.props.activeFilter){
@@ -55,10 +68,10 @@ class PetList extends React.Component{
 
     render(){
         const Yukleniyor = <div>Yukleniyor</div>;
-        const EmptyPets = <div>Bulunamadı</div>;
-    const Pets =  [<h3>Gösterilen Pet Sayısı: {this.state.pets.length}</h3>,<div className="row">
+        const EmptyPets = <div>Bulunamadı</div>;    // Tam buraya scroll edildikçe gelen pet sayısı yazdırdım. Ve fixed-top yaptım görmeniz için css bozuldu ama tabi.
+        const Pets =  [<h3 className='fixed-top'>Gösterilen Pet Sayısı: {this.state.pets.slice(0, this.state.loadPet).length}</h3>,<div className="row">
             {
-                this.state.pets.map((pet) => {
+                this.state.pets.slice(0, this.state.loadPet).map((pet) => {
                     return <Pet key={Math.random()} {...pet} />
                 })
             }
