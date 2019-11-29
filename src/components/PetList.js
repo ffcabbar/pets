@@ -26,8 +26,7 @@ class PetList extends React.Component{
         })
 
         window.onscroll = () => {
-            // Hocam en ufak scrollda 4 der 4 der hızlı bir şekilde pet'ler geliyordu. Bende ilk başta böyle bir şey yaptım net görünmesi için.
-            if(window.scrollY > 500) {
+            if(window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) {
                 this.setState({
                     loadPet: this.state.loadPet + 4
                 });
