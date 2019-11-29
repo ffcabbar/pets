@@ -5,6 +5,7 @@ import PetList from "./PetList";
 import Pet from "./Pet";
 import Filters from "./Filters";
 import Search from  "./Search";
+import BackToTop from "./BackToTop";
 export {
     Header,
     Main,
@@ -12,5 +13,6 @@ export {
     PetList,
     Pet,
     Filters,
-    Search
+    Search,
+    BackToTop
 }
