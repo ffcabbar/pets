@@ -1,8 +1,22 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
-function Pet(props) {
-    const {name, image, age, description, breed, id} = props;
+class Pet extends React.Component {
+    constructor(props){
+        super(props);
+    }
+
+    addToFavorites(pet) {
+
+        const url = "http://5dd7af92505c590014d3b4ac.mockapi.io/favorites";
+
+        axios.post(url,{pet});
+    }
+
+    
+render() { 
+    const {name, image, age, description, breed, id} = this.props;   
     return (
         <div className="col-lg-6 col-md-4 mb-4">
             <div className="card h-100">
@@ -22,7 +36,10 @@ function Pet(props) {
                     </p>
                 </div>
                 <div className="card-footer">
-                    <div className="btn btn-success">Favorilere Ekle</div>
+                    <div className="btn btn-success" onClick={() => {
+                        this.addToFavorites(this.props.pet);
+                    }}>Favorilere Ekle</div>
+
                     <div className="btn btn-secondary ml-3">
                         <Link className="text-decoration-none text-white" to={`/detay/${id}`}>Detay</Link>
                     </div>
@@ -30,6 +47,8 @@ function Pet(props) {
             </div>
         </div>
     );
+}
+
 }
 
 export default Pet;

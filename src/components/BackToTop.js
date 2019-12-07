@@ -14,7 +14,7 @@ function BackToTop(props) {
 
     return (
         <div>
-            <button id="back-to-top-btn"><i class="fas fa-chevron-up"></i></button>
+            <button id="back-to-top-btn"><i className="fas fa-chevron-up"></i></button>
         </div>
     );
 }
