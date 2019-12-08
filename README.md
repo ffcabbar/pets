@@ -1,4 +1,4 @@
-[GO](http://ffcabbar.github.io/pets)
+[Live demo](http://ffcabbar.github.io/pets)
 
 ## Available Scripts
 
